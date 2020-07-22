@@ -1,0 +1,129 @@
+import time
+
+answer_A = ["A", "a"]
+answer_B = ["B", "b"]
+answer_C = ["C", "c"]
+yes = ["Y", "y", "yes"]
+no = ["N", "n", "no"]
+
+sword = 0
+flower = 0
+
+required = ("\nUse only A, B, or C\n")
+
+def intro():
+    print("""One night you and your friends decide to go on a trip 
+           But it is too late at night which makes you wonder 
+           what your parents would say. You """)
+    time.sleep(5)
+    print("""  A. Under peer pressure start's to make excuses
+  B. You ask them and rejects the offer
+  C. You ask them and starts to argue""")
+    choice = input(">>> ")
+    if choice in answer_A:
+        option_excuse()
+    elif choice in answer_B:
+        print("\nYour friend's gets disappointed . And leaves without you "
+              "\n\nYou are now alone")
+    elif choice in answer_C:
+        option_liar()
+    else:
+        print(required)
+        intro()
+
+
+def option_excuse():
+    print("\nAfter some time your friends start to loses there patience. And")
+    time.sleep(2)
+    print("""  A. You don't want to ask your parents about it but you still want to go
+  B. You finally ask your parents about it
+  C. You start making some other excuses""")
+    choice = input(">>> ")
+    if choice in answer_A:
+        option_liar()
+    elif choice in answer_B:
+        print("""\nYour parents scolds you and do not give you 
+        permission to go \n\nYour friends laugh at you and the leave without you""")
+    elif choice in answer_C:
+        option_more()
+    else:
+        print(required)
+        option_excuse()
+
+
+def option_more():
+    print(""""\nYour excuses don't work on your friends and 
+    you finally ask your parents about it and get a answer no
+    but your friends say to you try one more time. Will you call your parents again .Y/N?""")
+    choice = input(">>> ")
+    if choice in yes:
+        sword = 1  # adds a sword
+    else:
+        sword = 0
+    print("\nWhat do you do say to convince them?")
+    time.sleep(1)
+    print("""  A. Say everybody is going
+  B. You say it is a college trip
+  C. You starts to argue with them """)
+    choice = input(">>> ")
+    if choice in answer_A:
+        print("""\nReally? And they say if everybody will jump 
+        form a building will you too\n\nThey reject your request your friends leave 
+        and you are left home alone """)
+    elif choice in answer_B:
+        if sword > 0:
+            print("""\nThey are somewhat convinced but you assure them you arent 
+            lying to them . And realise it might be useful to you. \n\n You leave with your friends on a trip""")
+        else:
+            print("""\nYou should have called up again. You missed 
+                  an opportunity. \n\nYour friends are disappointed. and leaves you are home alone""")
+    elif choice in answer_C:
+        print("""they ask why is this so important to you
+        can you explain it to us.""")
+        option_liar()
+    else:
+        print(required)
+        option_more()
+
+
+def option_liar():
+    print("""\nNow what will you do""")
+    time.sleep(1)
+    print("""  A. Out of frustration you start to argue more
+  B. You trick them by saying this will be the last trip you will go on
+  C. You disconnect the call. Hoping that they will call you back""")
+    choice = input(">>> ")
+    if choice in answer_A:
+        print("You have pissed off your parents. "
+              "\n\nYou are not allowed to go")
+    elif choice in answer_B:
+        print("\nYou're tricks did'nt work they did'nt believe you "
+              "\n\nYou don't go")
+    elif choice in answer_C:
+        option_back()
+    else:
+        print(required)
+        option_liar()
+
+
+def option_back():
+    print("""\nThey do call back. But now they are furious.
+    You are now getting scolded by them. 
+    What will you do interrupt them? Y/N""")
+    choice = input(">>> ")
+    if choice in yes:
+        flower = 1
+    else:
+        flower = 0
+    print("You are still listening to them and waiting them to stop")
+    time.sleep(1)
+    if flower > 0:
+        print("""\nThey finally stop scolding you .But now they feel 
+        guilty of scolding you so much and finally after waiting patiently
+              "\n\nThey allow you to go on the trip!""")
+    else:
+        print("\nMaybe you should'nt have interrupted them "
+              "\n\nNow the are angry and You won't be able to go now")
+
+
+intro()
